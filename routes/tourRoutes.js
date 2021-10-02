@@ -1,29 +1,8 @@
-// clone - starting files
-// const express = require('express');
-// const tourController = require('./../controllers/tourController');
-//
-// const router = express.Router();
-//
-// router.param('id', tourController.checkID);
-//
-// router
-//   .route('/')
-//   .get(tourController.getAllTours)
-//   .post(tourController.checkBody, tourController.createTour);
-//
-// router
-//   .route('/:id')
-//   .get(tourController.getTour)
-//   .patch(tourController.updateTour)
-//   .delete(tourController.deleteTour);
-//
-// module.exports = router;
-//////////////////////////////////////////////////////////////////////////
-
+const fs = require('fs');
 const express = require('express');
 
 const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
+  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
 
 const getAllTours = (req, res) => {
@@ -114,7 +93,7 @@ const deleteTour = (req, res) => {
   });
 };
 
-const tourRouter = express.Router();
+const router = express.Router();
 
 router
   .route('/')
@@ -126,7 +105,5 @@ router
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);
-
-app.use('/api/v1/tours', tourRouter);
 
 module.exports = router;

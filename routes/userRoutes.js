@@ -1,24 +1,5 @@
-// const express = require('express');
-// const userController = require('./../controllers/userController');
-//
-// const router = express.Router();
-//
-// router
-//   .route('/')
-//   .get(userController.getAllUsers)
-//   .post(userController.createUser);
-//
-// router
-//   .route('/:id')
-//   .get(userController.getUser)
-//   .patch(userController.updateUser)
-//   .delete(userController.deleteUser);
-//
-// module.exports = router;
-
+const fs = require('fs');
 const express = require('express');
-
-const userRouter = express.Router();
 
 const getAllUsers = (req, res) => {
   res.status(500).json({
@@ -55,17 +36,17 @@ const deleteUser = (req, res) => {
   });
 };
 
-userRouter
+const router = express.Router();
+
+router
   .route('/')
   .get(getAllUsers)
   .post(createUser);
 
-userRouter
+router
   .route('/:id')
   .get(getUser)
   .patch(updateUser)
   .delete(deleteUser);
-
-app.use('/api/v1/users', userRouter);
 
 module.exports = router;
