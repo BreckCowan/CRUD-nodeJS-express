@@ -24,14 +24,11 @@ app.use((req, res, next) => {
 });
 
 // 2 - Route Handlers
-// restructured
 
 // 3 - Routes
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
 // 4 - Start Server
-const port = 3000;
-app.listen(port, () => {
-  console.log(`App running on port ${port}`);
-});
+
+module.exports = app;

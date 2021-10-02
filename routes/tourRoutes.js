@@ -3,13 +3,14 @@ const tourController = require('./../controllers/tourController');
 
 const router = express.Router();
 
+router.param('id', tourController.checkID);
+
 router
   .route('/')
   .get(tourController.getAllTours)
-  .post(tourController.createNewTours);
+  .post(tourController.checkBody, tourController.createNewTours);
 
 router
-
   .route('/:id')
   .get(tourController.getTour)
   .patch(tourController.updateTour)
